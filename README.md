@@ -85,7 +85,7 @@ Example:
 * Request: `GET http://localhost:8000/api/abc123`
 * Redirects to: `https://www.example.com`
 
-### GET `/api/analyst/:shortid`
+### GET `/api/analytic/:shortid`
 
 Get the number of times a short URL has been visited and the timestamps of each visit.
 
