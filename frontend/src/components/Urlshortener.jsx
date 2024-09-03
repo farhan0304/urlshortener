@@ -1,31 +1,9 @@
-import { useState } from 'react'
-import './App.css'
-import Layout from './pages/Layout'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import UrlForm from './pages/UrlForm'
-import { Route, Routes } from 'react-router-dom'
+import React from 'react'
 
-function App() {
-  
+function Urlshortener({className,url,setUrl,handleShorten,shortenedUrl,handleCopy,show}) {
   return (
-    <div className="bd ">
-      <Routes>
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<UrlForm/>} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/signup' element={<Signup/>} />
-        </Route>
-      </Routes>
-      {/* <header className='navbar'>
-        <Navbar/>
-      </header>
-      <Login/>
-      
-      <UrlForm/>
-      
-      <main className='h-[80%] flex flex-col gap-4 justify-center items-center'>
-      <div className="bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+    <main className={className} >
+    <div className="bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
       style={{backgroundColor:"rgba(31,41,55,0.8)"}}
       >
         <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="url">
@@ -69,12 +47,8 @@ function App() {
         </button>
       </div>
     </div>
-      </main>
-      <footer className='mt-auto'>
-        <Footer/>
-      </footer> */}
-    </div>
+    </main>
   )
 }
 
-export default App
+export default Urlshortener
