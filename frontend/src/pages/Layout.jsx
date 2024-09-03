@@ -1,14 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import "../App.css"
 
-function Layout() {
+function Layout({status,setStatus}) {
     return (
         <div className='bd'>
             <header className='navbar'>
-                <Navbar/>
+                <Navbar status={status} setStatus={setStatus}/>
             </header>
             <Outlet/>
             <footer className='mt-auto'>

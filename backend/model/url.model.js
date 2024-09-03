@@ -14,7 +14,7 @@ const urlSchema = new mongoose.Schema({
     redirectedurl:{
         type: String,
         required:true,
-        unique:true
+        unique:false
     },
     visitedate:[{visitdate:{type:Number}},]
 },{timestamps:true});

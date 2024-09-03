@@ -1,11 +1,37 @@
 import React,{useState} from "react";
+import {useNavigate} from "react-router-dom"
 
-
-const Login = () => {
+const Login = ({setStatus}) => {
+    const navigate = useNavigate();
+    const [msg,setMsg] = useState(null);
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log("Email: "+email+" "+typeof(email));
-        console.log("Password: "+password+" "+typeof(password));
+        // console.log("Email: "+email+" "+typeof(email));
+        // console.log("Password: "+password+" "+typeof(password));
+        const data = await fetch("/user/login",{
+            method:"POST",
+            headers: {
+              'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify({
+              email:email,
+              password:password
+            }), 
+      
+        })
+        const response = await data.json();
+        if (response.error){
+            setMsg("All Fields are Required")
+            return;
+        }
+        if (response.url){
+            navigate(`${response.url}`)
+            return;
+        }
+        setEmail("");
+        setPassword("");
+        setStatus(true);
+        navigate("/")
 
     }
     const [email,setEmail] = useState("");
@@ -17,7 +43,11 @@ const Login = () => {
         >
         <h2 className="text-center text-3xl font-extrabold text-white">
             Sign in to your account
+            
         </h2>
+        <span>
+        {msg&&`${msg}`}
+        </span>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm space-y-4">
             <div>

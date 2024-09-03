@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 import Urlshortener from '../components/Urlshortener'
+import { useNavigate } from 'react-router-dom';
 
 function UrlForm() {
-    const baseurl = "http://localhost:8000/api"
+  const navigate = useNavigate();
+    const baseurl = "http://localhost:8000"
     const [url, setUrl] = useState('');
     const [shortenedUrl,setShortenedUrl] = useState("");
     const [show,setShow] = useState(false)
@@ -19,6 +21,9 @@ function UrlForm() {
   
       })
       const response = await data.json();
+      if (response.url){
+        navigate(`${response.url}`)
+      }
       setUrl("");
       setShortenedUrl(`${baseurl}/${response.shortid}`)
       setShow(true)
