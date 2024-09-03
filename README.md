@@ -1,4 +1,4 @@
-# URL SHORTNER
+# URL SHORTENER
 
 A simple URL shortener service built with Node.js, Express, Mongoose, and React. This service allows you to shorten URLs, redirect to the original URL, and analyze link visits.
 
